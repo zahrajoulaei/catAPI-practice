@@ -12676,16 +12676,16 @@ function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyri
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
 // The breed selection input element.
-var breedSelect = document.getElementById('breedSelect');
+var breedSelect = document.getElementById("breedSelect");
 // The information section div element.
-var infoDump = document.getElementById('infoDump');
+var infoDump = document.getElementById("infoDump");
 // The progress bar div element.
-var progressBar = document.getElementById('progressBar');
+var progressBar = document.getElementById("progressBar");
 // The get favourites button element.
-var getFavouritesBtn = document.getElementById('getFavouritesBtn');
+var getFavouritesBtn = document.getElementById("getFavouritesBtn");
 
 // Step 0: Store your API key here for reference and easy access.
-var API_KEY = '';
+var API_KEY = "";
 
 /**
  * 1. Create an async function "initialLoad" that does the following:
@@ -12700,7 +12700,7 @@ function initialLoad() {
 }
 function _initialLoad() {
   _initialLoad = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var res, jsonData, breadSelect;
+    var res, jsonData;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -12711,24 +12711,30 @@ function _initialLoad() {
           res = _context.sent;
           jsonData = res.data;
           console.log("data is:", jsonData);
-          breadSelect = document.getElementById('breedSelect');
           jsonData.forEach(function (data) {
-            var option = document.createElement('option');
+            var option = document.createElement("option");
             option.value = data.id;
             option.textContent = data.name;
-            breadSelect.appendChild(option);
+            breedSelect.appendChild(option);
           });
-          _context.next = 13;
-          break;
+          if (!(jsonData.length > 0)) {
+            _context.next = 10;
+            break;
+          }
+          _context.next = 10;
+          return fetchBreedInfo(jsonData[0].id);
         case 10:
-          _context.prev = 10;
+          _context.next = 15;
+          break;
+        case 12:
+          _context.prev = 12;
           _context.t0 = _context["catch"](0);
           console.log("error happend!!", _context.t0);
-        case 13:
+        case 15:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 10]]);
+    }, _callee, null, [[0, 12]]);
   }));
   return _initialLoad.apply(this, arguments);
 }
@@ -12748,6 +12754,47 @@ initialLoad();
  * - Each new selection should clear, re-populate, and restart the Carousel.
  * - Add a call to this function to the end of your initialLoad function above to create the initial carousel.
  */
+function fetchBreedInfo() {
+  return _fetchBreedInfo.apply(this, arguments);
+}
+function _fetchBreedInfo() {
+  _fetchBreedInfo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var breedId, res, _breedInfo;
+    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
+      while (1) switch (_context2.prev = _context2.next) {
+        case 0:
+          _context2.prev = 0;
+          breedId = breedSelect.value;
+          _context2.next = 4;
+          return fetch("https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=".concat(breedId, "&api_key=").concat(API_KEY));
+        case 4:
+          res = _context2.sent;
+          _context2.next = 7;
+          return res.json();
+        case 7:
+          _breedInfo = _context2.sent;
+          console.log("breedInfo:", _breedInfo);
+          _context2.next = 14;
+          break;
+        case 11:
+          _context2.prev = 11;
+          _context2.t0 = _context2["catch"](0);
+          consolge.log(arror.message);
+        case 14:
+        case "end":
+          return _context2.stop();
+      }
+    }, _callee2, null, [[0, 11]]);
+  }));
+  return _fetchBreedInfo.apply(this, arguments);
+}
+breedSelect.addEventListener("change", fetchBreedInfo);
+breedInfo.forEach(function (data) {
+  var infoDiv = document.createElement("div");
+  infoDiv.innerHTML = "data url is : ".concat(data.url);
+  carouslInner.appendChild(infoDiv);
+  console.log(infoDiv);
+});
 
 /**
  * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
@@ -12820,14 +12867,14 @@ function favourite(_x) {
  *   your code should account for this.
  */
 function _favourite() {
-  _favourite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2(imgId) {
-    return _regeneratorRuntime().wrap(function _callee2$(_context2) {
-      while (1) switch (_context2.prev = _context2.next) {
+  _favourite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(imgId) {
+    return _regeneratorRuntime().wrap(function _callee3$(_context3) {
+      while (1) switch (_context3.prev = _context3.next) {
         case 0:
         case "end":
-          return _context2.stop();
+          return _context3.stop();
       }
-    }, _callee2);
+    }, _callee3);
   }));
   return _favourite.apply(this, arguments);
 }

@@ -1,17 +1,17 @@
-import * as Carousel from './Carousel.js';
-import axios from 'axios';
+import * as Carousel from "./Carousel.js";
+import axios from "axios";
 
 // The breed selection input element.
-const breedSelect = document.getElementById('breedSelect');
+const breedSelect = document.getElementById("breedSelect");
 // The information section div element.
-const infoDump = document.getElementById('infoDump');
+const infoDump = document.getElementById("infoDump");
 // The progress bar div element.
-const progressBar = document.getElementById('progressBar');
+const progressBar = document.getElementById("progressBar");
 // The get favourites button element.
-const getFavouritesBtn = document.getElementById('getFavouritesBtn');
+const getFavouritesBtn = document.getElementById("getFavouritesBtn");
 
 // Step 0: Store your API key here for reference and easy access.
-const API_KEY = '';
+const API_KEY = "";
 
 /**
  * 1. Create an async function "initialLoad" that does the following:
@@ -22,30 +22,27 @@ const API_KEY = '';
  * This function should execute immediately.
  */
 async function initialLoad() {
-  try{
+  try {
     const res = await axios.get("https://api.thecatapi.com/v1/breeds");
 
-const jsonData =  res.data;
+    const jsonData = res.data;
 
-console.log("data is:",jsonData)
+    console.log("data is:", jsonData);
 
-const breadSelect = document.getElementById('breedSelect')
-jsonData.forEach(data=> {
-  const option = document.createElement('option')
-  option.value = data.id
-  option.textContent = data.name
-  breadSelect.appendChild(option)
-
-})
+    jsonData.forEach((data) => {
+      const option = document.createElement("option");
+      option.value = data.id;
+      option.textContent = data.name;
+      breedSelect.appendChild(option);
+    });
+    if(jsonData.length > 0){
+      await fetchBreedInfo(jsonData[0].id)
+    }
+  } catch (error) {
+    console.log("error happend!!", error);
   }
-  catch(error){
-    console.log("error happend!!", error)
-  }
 
-
-// console.log("ID is:",jsonData.id)
 }
-
 
 initialLoad();
 
@@ -63,6 +60,30 @@ initialLoad();
  * - Each new selection should clear, re-populate, and restart the Carousel.
  * - Add a call to this function to the end of your initialLoad function above to create the initial carousel.
  */
+async function fetchBreedInfo() {
+  try {
+    const breedId = breedSelect.value;
+    const res = await fetch(
+      `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}&api_key=${API_KEY}`
+    );
+    const breedInfo = await res.json();
+
+    console.log("breedInfo:", breedInfo);
+    
+  } catch (error) {
+    consolge.log(arror.message);
+  }
+}
+
+breedSelect.addEventListener("change", fetchBreedInfo);
+
+breedInfo.forEach((data) => {
+  const infoDiv = document.createElement("div");
+  infoDiv.innerHTML = `data url is : ${data.url}`;
+  carouslInner.appendChild(infoDiv);
+
+  console.log(infoDiv);
+});
 
 /**
  * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
