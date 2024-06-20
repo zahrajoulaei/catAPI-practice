@@ -63,38 +63,40 @@ initialLoad();
 async function fetchBreedInfo() {
   try {
     const breedId = breedSelect.value;
-    const res = await fetch(
+    const res = await axios.get(
       `https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=${breedId}&api_key=${API_KEY}`
     );
-    const breedInfo = await res.json();
+    const breedInfo = res.data;
 
     console.log("breedInfo:", breedInfo);
 
 
     const carouselInner = document.getElementById('carouselInner');
     carouselInner.innerHTML = '';
+
+
     breedInfo.forEach((data) => {
       const infoDiv = document.createElement("div");
       infoDiv.classList.add('carousel-item'); 
+     
       infoDiv.innerHTML =  `<img src="${data.url}" class="d-block w-100" alt="Cat Image">`;
       carouselInner.appendChild(infoDiv);
     
-      // if (carouselInner.firstChild) {
-      //   carouselInner.firstChild.classList.add('active');
-      // }
-
-console.log("info div:" , infoDiv)
-
-      infoDump.innerHTML = 'info';
       const breedDetails = breedInfo[0].breeds[0];
-      const breedInfoDiv = document.createElement('div');
-      breedInfoDiv.innerHTML = `
-        <h3>${breedDetails.name}</h3>
+      infoDump.innerHTML = `
+        <h3>name: ${breedInfo.name}</h3>
         <p>${breedDetails.description}</p>
         <p>Temperament: ${breedDetails.temperament}</p>
         <p>Origin: ${breedDetails.origin}</p>
       `;
-      infoDump.appendChild(breedInfoDiv);
+
+console.log("info div:" , infoDiv.innerHTML)
+// infoDump.innerHTML='hi'
+// if (breedInfo.length > 0 && breedInfo[0].breeds.length > 0) {
+  
+// } else {
+//   infoDump.innerHTML = 'No breed information available.';
+// }
   
       console.log("InfoDump updated:", infoDump);
 

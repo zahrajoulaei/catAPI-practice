@@ -12697,13 +12697,10 @@ function _fetchBreedInfo() {
           _context2.prev = 0;
           breedId = breedSelect.value;
           _context2.next = 4;
-          return fetch("https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=".concat(breedId, "&api_key=").concat(API_KEY));
+          return _axios.default.get("https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=".concat(breedId, "&api_key=").concat(API_KEY));
         case 4:
           res = _context2.sent;
-          _context2.next = 7;
-          return res.json();
-        case 7:
-          breedInfo = _context2.sent;
+          breedInfo = res.data;
           console.log("breedInfo:", breedInfo);
           carouselInner = document.getElementById('carouselInner');
           carouselInner.innerHTML = '';
@@ -12712,30 +12709,29 @@ function _fetchBreedInfo() {
             infoDiv.classList.add('carousel-item');
             infoDiv.innerHTML = "<img src=\"".concat(data.url, "\" class=\"d-block w-100\" alt=\"Cat Image\">");
             carouselInner.appendChild(infoDiv);
+            var breedDetails = breedInfo[0].breeds[0];
+            infoDump.innerHTML = "\n        <h3>name: ".concat(breedInfo.name, "</h3>\n        <p>").concat(breedDetails.description, "</p>\n        <p>Temperament: ").concat(breedDetails.temperament, "</p>\n        <p>Origin: ").concat(breedDetails.origin, "</p>\n      ");
+            console.log("info div:", infoDiv.innerHTML);
+            // infoDump.innerHTML='hi'
+            // if (breedInfo.length > 0 && breedInfo[0].breeds.length > 0) {
 
-            // if (carouselInner.firstChild) {
-            //   carouselInner.firstChild.classList.add('active');
+            // } else {
+            //   infoDump.innerHTML = 'No breed information available.';
             // }
 
-            console.log("info div:", infoDiv);
-            infoDump.innerHTML = 'info';
-            var breedDetails = breedInfo[0].breeds[0];
-            var breedInfoDiv = document.createElement('div');
-            breedInfoDiv.innerHTML = "\n        <h3>".concat(breedDetails.name, "</h3>\n        <p>").concat(breedDetails.description, "</p>\n        <p>Temperament: ").concat(breedDetails.temperament, "</p>\n        <p>Origin: ").concat(breedDetails.origin, "</p>\n      ");
-            infoDump.appendChild(breedInfoDiv);
             console.log("InfoDump updated:", infoDump);
           });
-          _context2.next = 17;
+          _context2.next = 15;
           break;
-        case 14:
-          _context2.prev = 14;
+        case 12:
+          _context2.prev = 12;
           _context2.t0 = _context2["catch"](0);
           console.log(_context2.t0.message);
-        case 17:
+        case 15:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 14]]);
+    }, _callee2, null, [[0, 12]]);
   }));
   return _fetchBreedInfo.apply(this, arguments);
 }
