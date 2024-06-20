@@ -12759,7 +12759,7 @@ function fetchBreedInfo() {
 }
 function _fetchBreedInfo() {
   _fetchBreedInfo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-    var breedId, res, _breedInfo;
+    var breedId, res, breedInfo, carouselInner;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
@@ -12772,29 +12772,43 @@ function _fetchBreedInfo() {
           _context2.next = 7;
           return res.json();
         case 7:
-          _breedInfo = _context2.sent;
-          console.log("breedInfo:", _breedInfo);
-          _context2.next = 14;
+          breedInfo = _context2.sent;
+          console.log("breedInfo:", breedInfo);
+          carouselInner = document.getElementById('carouselInner');
+          carouselInner.innerHTML = '';
+          breedInfo.forEach(function (data) {
+            var infoDiv = document.createElement("div");
+            infoDiv.classList.add('carousel-item');
+            infoDiv.innerHTML = "<img src=\"".concat(data.url, "\" class=\"d-block w-100\" alt=\"Cat Image\">");
+            carouselInner.appendChild(infoDiv);
+
+            // if (carouselInner.firstChild) {
+            //   carouselInner.firstChild.classList.add('active');
+            // }
+
+            console.log("info div:", infoDiv);
+            infoDump.innerHTML = 'info';
+            var breedDetails = breedInfo[0].breeds[0];
+            var breedInfoDiv = document.createElement('div');
+            breedInfoDiv.innerHTML = "\n        <h3>".concat(breedDetails.name, "</h3>\n        <p>").concat(breedDetails.description, "</p>\n        <p>Temperament: ").concat(breedDetails.temperament, "</p>\n        <p>Origin: ").concat(breedDetails.origin, "</p>\n      ");
+            infoDump.appendChild(breedInfoDiv);
+            console.log("InfoDump updated:", infoDump);
+          });
+          _context2.next = 17;
           break;
-        case 11:
-          _context2.prev = 11;
-          _context2.t0 = _context2["catch"](0);
-          consolge.log(arror.message);
         case 14:
+          _context2.prev = 14;
+          _context2.t0 = _context2["catch"](0);
+          console.log(_context2.t0.message);
+        case 17:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 11]]);
+    }, _callee2, null, [[0, 14]]);
   }));
   return _fetchBreedInfo.apply(this, arguments);
 }
 breedSelect.addEventListener("change", fetchBreedInfo);
-breedInfo.forEach(function (data) {
-  var infoDiv = document.createElement("div");
-  infoDiv.innerHTML = "data url is : ".concat(data.url);
-  carouslInner.appendChild(infoDiv);
-  console.log(infoDiv);
-});
 
 /**
  * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
@@ -12903,7 +12917,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "61915" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52007" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];

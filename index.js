@@ -69,21 +69,46 @@ async function fetchBreedInfo() {
     const breedInfo = await res.json();
 
     console.log("breedInfo:", breedInfo);
+
+
+    const carouselInner = document.getElementById('carouselInner');
+    carouselInner.innerHTML = '';
+    breedInfo.forEach((data) => {
+      const infoDiv = document.createElement("div");
+      infoDiv.classList.add('carousel-item'); 
+      infoDiv.innerHTML =  `<img src="${data.url}" class="d-block w-100" alt="Cat Image">`;
+      carouselInner.appendChild(infoDiv);
+    
+      // if (carouselInner.firstChild) {
+      //   carouselInner.firstChild.classList.add('active');
+      // }
+
+console.log("info div:" , infoDiv)
+
+      infoDump.innerHTML = 'info';
+      const breedDetails = breedInfo[0].breeds[0];
+      const breedInfoDiv = document.createElement('div');
+      breedInfoDiv.innerHTML = `
+        <h3>${breedDetails.name}</h3>
+        <p>${breedDetails.description}</p>
+        <p>Temperament: ${breedDetails.temperament}</p>
+        <p>Origin: ${breedDetails.origin}</p>
+      `;
+      infoDump.appendChild(breedInfoDiv);
+  
+      console.log("InfoDump updated:", infoDump);
+
+    });
+
     
   } catch (error) {
-    consolge.log(arror.message);
+    console.log(error.message);
   }
 }
 
 breedSelect.addEventListener("change", fetchBreedInfo);
 
-breedInfo.forEach((data) => {
-  const infoDiv = document.createElement("div");
-  infoDiv.innerHTML = `data url is : ${data.url}`;
-  carouslInner.appendChild(infoDiv);
 
-  console.log(infoDiv);
-});
 
 /**
  * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
