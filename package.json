@@ -10,6 +10,7 @@
     "@popperjs/core": "2.11.7",
     "axios": "^1.7.2",
     "bootstrap": "5.2.3",
+    "dotenv": "^16.4.5",
     "jquery": "3.6.4",
     "parcel-bundler": "^1.6.1"
   },

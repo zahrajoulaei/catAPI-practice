@@ -12660,6 +12660,7 @@ exports.CanceledError = CanceledError;
 exports.AxiosError = AxiosError;
 exports.Axios = Axios;
 },{"./lib/axios.js":"node_modules/axios/lib/axios.js"}],"index.js":[function(require,module,exports) {
+var define;
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -12675,219 +12676,263 @@ function _typeof(o) { "@babel/helpers - typeof"; return _typeof = "function" == 
 function _regeneratorRuntime() { "use strict"; /*! regenerator-runtime -- Copyright (c) 2014-present, Facebook, Inc. -- license (MIT): https://github.com/facebook/regenerator/blob/main/LICENSE */ _regeneratorRuntime = function _regeneratorRuntime() { return e; }; var t, e = {}, r = Object.prototype, n = r.hasOwnProperty, o = Object.defineProperty || function (t, e, r) { t[e] = r.value; }, i = "function" == typeof Symbol ? Symbol : {}, a = i.iterator || "@@iterator", c = i.asyncIterator || "@@asyncIterator", u = i.toStringTag || "@@toStringTag"; function define(t, e, r) { return Object.defineProperty(t, e, { value: r, enumerable: !0, configurable: !0, writable: !0 }), t[e]; } try { define({}, ""); } catch (t) { define = function define(t, e, r) { return t[e] = r; }; } function wrap(t, e, r, n) { var i = e && e.prototype instanceof Generator ? e : Generator, a = Object.create(i.prototype), c = new Context(n || []); return o(a, "_invoke", { value: makeInvokeMethod(t, r, c) }), a; } function tryCatch(t, e, r) { try { return { type: "normal", arg: t.call(e, r) }; } catch (t) { return { type: "throw", arg: t }; } } e.wrap = wrap; var h = "suspendedStart", l = "suspendedYield", f = "executing", s = "completed", y = {}; function Generator() {} function GeneratorFunction() {} function GeneratorFunctionPrototype() {} var p = {}; define(p, a, function () { return this; }); var d = Object.getPrototypeOf, v = d && d(d(values([]))); v && v !== r && n.call(v, a) && (p = v); var g = GeneratorFunctionPrototype.prototype = Generator.prototype = Object.create(p); function defineIteratorMethods(t) { ["next", "throw", "return"].forEach(function (e) { define(t, e, function (t) { return this._invoke(e, t); }); }); } function AsyncIterator(t, e) { function invoke(r, o, i, a) { var c = tryCatch(t[r], t, o); if ("throw" !== c.type) { var u = c.arg, h = u.value; return h && "object" == _typeof(h) && n.call(h, "__await") ? e.resolve(h.__await).then(function (t) { invoke("next", t, i, a); }, function (t) { invoke("throw", t, i, a); }) : e.resolve(h).then(function (t) { u.value = t, i(u); }, function (t) { return invoke("throw", t, i, a); }); } a(c.arg); } var r; o(this, "_invoke", { value: function value(t, n) { function callInvokeWithMethodAndArg() { return new e(function (e, r) { invoke(t, n, e, r); }); } return r = r ? r.then(callInvokeWithMethodAndArg, callInvokeWithMethodAndArg) : callInvokeWithMethodAndArg(); } }); } function makeInvokeMethod(e, r, n) { var o = h; return function (i, a) { if (o === f) throw Error("Generator is already running"); if (o === s) { if ("throw" === i) throw a; return { value: t, done: !0 }; } for (n.method = i, n.arg = a;;) { var c = n.delegate; if (c) { var u = maybeInvokeDelegate(c, n); if (u) { if (u === y) continue; return u; } } if ("next" === n.method) n.sent = n._sent = n.arg;else if ("throw" === n.method) { if (o === h) throw o = s, n.arg; n.dispatchException(n.arg); } else "return" === n.method && n.abrupt("return", n.arg); o = f; var p = tryCatch(e, r, n); if ("normal" === p.type) { if (o = n.done ? s : l, p.arg === y) continue; return { value: p.arg, done: n.done }; } "throw" === p.type && (o = s, n.method = "throw", n.arg = p.arg); } }; } function maybeInvokeDelegate(e, r) { var n = r.method, o = e.iterator[n]; if (o === t) return r.delegate = null, "throw" === n && e.iterator.return && (r.method = "return", r.arg = t, maybeInvokeDelegate(e, r), "throw" === r.method) || "return" !== n && (r.method = "throw", r.arg = new TypeError("The iterator does not provide a '" + n + "' method")), y; var i = tryCatch(o, e.iterator, r.arg); if ("throw" === i.type) return r.method = "throw", r.arg = i.arg, r.delegate = null, y; var a = i.arg; return a ? a.done ? (r[e.resultName] = a.value, r.next = e.nextLoc, "return" !== r.method && (r.method = "next", r.arg = t), r.delegate = null, y) : a : (r.method = "throw", r.arg = new TypeError("iterator result is not an object"), r.delegate = null, y); } function pushTryEntry(t) { var e = { tryLoc: t[0] }; 1 in t && (e.catchLoc = t[1]), 2 in t && (e.finallyLoc = t[2], e.afterLoc = t[3]), this.tryEntries.push(e); } function resetTryEntry(t) { var e = t.completion || {}; e.type = "normal", delete e.arg, t.completion = e; } function Context(t) { this.tryEntries = [{ tryLoc: "root" }], t.forEach(pushTryEntry, this), this.reset(!0); } function values(e) { if (e || "" === e) { var r = e[a]; if (r) return r.call(e); if ("function" == typeof e.next) return e; if (!isNaN(e.length)) { var o = -1, i = function next() { for (; ++o < e.length;) if (n.call(e, o)) return next.value = e[o], next.done = !1, next; return next.value = t, next.done = !0, next; }; return i.next = i; } } throw new TypeError(_typeof(e) + " is not iterable"); } return GeneratorFunction.prototype = GeneratorFunctionPrototype, o(g, "constructor", { value: GeneratorFunctionPrototype, configurable: !0 }), o(GeneratorFunctionPrototype, "constructor", { value: GeneratorFunction, configurable: !0 }), GeneratorFunction.displayName = define(GeneratorFunctionPrototype, u, "GeneratorFunction"), e.isGeneratorFunction = function (t) { var e = "function" == typeof t && t.constructor; return !!e && (e === GeneratorFunction || "GeneratorFunction" === (e.displayName || e.name)); }, e.mark = function (t) { return Object.setPrototypeOf ? Object.setPrototypeOf(t, GeneratorFunctionPrototype) : (t.__proto__ = GeneratorFunctionPrototype, define(t, u, "GeneratorFunction")), t.prototype = Object.create(g), t; }, e.awrap = function (t) { return { __await: t }; }, defineIteratorMethods(AsyncIterator.prototype), define(AsyncIterator.prototype, c, function () { return this; }), e.AsyncIterator = AsyncIterator, e.async = function (t, r, n, o, i) { void 0 === i && (i = Promise); var a = new AsyncIterator(wrap(t, r, n, o), i); return e.isGeneratorFunction(r) ? a : a.next().then(function (t) { return t.done ? t.value : a.next(); }); }, defineIteratorMethods(g), define(g, u, "Generator"), define(g, a, function () { return this; }), define(g, "toString", function () { return "[object Generator]"; }), e.keys = function (t) { var e = Object(t), r = []; for (var n in e) r.push(n); return r.reverse(), function next() { for (; r.length;) { var t = r.pop(); if (t in e) return next.value = t, next.done = !1, next; } return next.done = !0, next; }; }, e.values = values, Context.prototype = { constructor: Context, reset: function reset(e) { if (this.prev = 0, this.next = 0, this.sent = this._sent = t, this.done = !1, this.delegate = null, this.method = "next", this.arg = t, this.tryEntries.forEach(resetTryEntry), !e) for (var r in this) "t" === r.charAt(0) && n.call(this, r) && !isNaN(+r.slice(1)) && (this[r] = t); }, stop: function stop() { this.done = !0; var t = this.tryEntries[0].completion; if ("throw" === t.type) throw t.arg; return this.rval; }, dispatchException: function dispatchException(e) { if (this.done) throw e; var r = this; function handle(n, o) { return a.type = "throw", a.arg = e, r.next = n, o && (r.method = "next", r.arg = t), !!o; } for (var o = this.tryEntries.length - 1; o >= 0; --o) { var i = this.tryEntries[o], a = i.completion; if ("root" === i.tryLoc) return handle("end"); if (i.tryLoc <= this.prev) { var c = n.call(i, "catchLoc"), u = n.call(i, "finallyLoc"); if (c && u) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } else if (c) { if (this.prev < i.catchLoc) return handle(i.catchLoc, !0); } else { if (!u) throw Error("try statement without catch or finally"); if (this.prev < i.finallyLoc) return handle(i.finallyLoc); } } } }, abrupt: function abrupt(t, e) { for (var r = this.tryEntries.length - 1; r >= 0; --r) { var o = this.tryEntries[r]; if (o.tryLoc <= this.prev && n.call(o, "finallyLoc") && this.prev < o.finallyLoc) { var i = o; break; } } i && ("break" === t || "continue" === t) && i.tryLoc <= e && e <= i.finallyLoc && (i = null); var a = i ? i.completion : {}; return a.type = t, a.arg = e, i ? (this.method = "next", this.next = i.finallyLoc, y) : this.complete(a); }, complete: function complete(t, e) { if ("throw" === t.type) throw t.arg; return "break" === t.type || "continue" === t.type ? this.next = t.arg : "return" === t.type ? (this.rval = this.arg = t.arg, this.method = "return", this.next = "end") : "normal" === t.type && e && (this.next = e), y; }, finish: function finish(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.finallyLoc === t) return this.complete(r.completion, r.afterLoc), resetTryEntry(r), y; } }, catch: function _catch(t) { for (var e = this.tryEntries.length - 1; e >= 0; --e) { var r = this.tryEntries[e]; if (r.tryLoc === t) { var n = r.completion; if ("throw" === n.type) { var o = n.arg; resetTryEntry(r); } return o; } } throw Error("illegal catch attempt"); }, delegateYield: function delegateYield(e, r, n) { return this.delegate = { iterator: values(e), resultName: r, nextLoc: n }, "next" === this.method && (this.arg = t), y; } }, e; }
 function asyncGeneratorStep(n, t, e, r, o, a, c) { try { var i = n[a](c), u = i.value; } catch (n) { return void e(n); } i.done ? t(u) : Promise.resolve(u).then(r, o); }
 function _asyncToGenerator(n) { return function () { var t = this, e = arguments; return new Promise(function (r, o) { var a = n.apply(t, e); function _next(n) { asyncGeneratorStep(a, r, o, _next, _throw, "next", n); } function _throw(n) { asyncGeneratorStep(a, r, o, _next, _throw, "throw", n); } _next(void 0); }); }; }
+var body = document.body;
 // The breed selection input element.
-var breedSelect = document.getElementById("breedSelect");
+var breedSelect = document.getElementById('breedSelect');
 // The information section div element.
-var infoDump = document.getElementById("infoDump");
+var infoDump = document.getElementById('infoDump');
 // The progress bar div element.
-var progressBar = document.getElementById("progressBar");
+var progressBar = document.getElementById('progressBar');
 // The get favourites button element.
-var getFavouritesBtn = document.getElementById("getFavouritesBtn");
-
-// Step 0: Store your API key here for reference and easy access.
-var API_KEY = "";
-
-/**
- * 1. Create an async function "initialLoad" that does the following:
- * - Retrieve a list of breeds from the cat API using fetch().
- * - Create new <options> for each of these breeds, and append them to breedSelect.
- *  - Each option should have a value attribute equal to the id of the breed.
- *  - Each option should display text equal to the name of the breed.
- * This function should execute immediately.
- */
+var getFavouritesBtn = document.getElementById('getFavouritesBtn');
+var API_KEY = undefined;
+console.log('API_KEY:', undefined);
+_axios.default.defaults.baseURL = 'https://api.thecatapi.com/v1';
+_axios.default.defaults.headers.common['x-api-key'] = API_KEY;
+_axios.default.interceptors.request.use(function (request) {
+  request.metadata = request.metadata || {};
+  request.metadata.startTime = new Date().getTime();
+  progressBar.style.width = '0%';
+  body.style.cursor = 'progress';
+  return request;
+});
+_axios.default.interceptors.response.use(function (response) {
+  response.config.metadata.endTime = new Date().getTime();
+  response.durationInMS = response.config.metadata.endTime - response.config.metadata.startTime;
+  body.style.cursor = 'default';
+  return response;
+}, function (error) {
+  error.config.metadata.endTime = new Date().getTime();
+  error.durationInMS = error.config.metadata.endTime - error.config.metadata.startTime;
+  body.style.cursor = 'default';
+  throw error;
+});
+function updateProgress(progressEvent) {
+  var percentage = Math.round(progressEvent.loaded / progressEvent.total * 100);
+  progressBar.style.width = "".concat(percentage, "%");
+}
 function initialLoad() {
   return _initialLoad.apply(this, arguments);
 }
 function _initialLoad() {
   _initialLoad = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var res, jsonData;
+    var _yield$axios$get, initialData, durationInMS, carouselInner;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
           _context.prev = 0;
           _context.next = 3;
-          return _axios.default.get("https://api.thecatapi.com/v1/breeds");
-        case 3:
-          res = _context.sent;
-          jsonData = res.data;
-          console.log("data is:", jsonData);
-          jsonData.forEach(function (data) {
-            var option = document.createElement("option");
-            option.value = data.id;
-            option.textContent = data.name;
-            breedSelect.appendChild(option);
+          return _axios.default.get('/breeds', {
+            onDownloadProgress: updateProgress
           });
-          if (!(jsonData.length > 0)) {
-            _context.next = 10;
+        case 3:
+          _yield$axios$get = _context.sent;
+          initialData = _yield$axios$get.data;
+          durationInMS = _yield$axios$get.durationInMS;
+          if (initialData) {
+            _context.next = 8;
             break;
           }
-          _context.next = 10;
-          return fetchBreedInfo(jsonData[0].id);
-        case 10:
-          _context.next = 15;
+          throw new Error('No data was returned from the API');
+        case 8:
+          console.log("Initial load request duration: ".concat(durationInMS, "ms"));
+          initialData.forEach(function (breed) {
+            var option = document.createElement('option');
+            option.value = breed.id;
+            option.textContent = breed.name;
+            breedSelect.appendChild(option);
+          });
+          console.log("the data i need:", initialData);
+          initialData.forEach(function (breed, index) {
+            console.log("Breed ".concat(index + 1, ":"));
+            console.log("ID: ".concat(breed.id));
+            console.log("Name: ".concat(breed.name));
+            console.log("Description: ".concat(breed.description || "No description available"));
+            console.log("Temperament: ".concat(breed.temperament || "No temperament available"));
+            console.log("Origin: ".concat(breed.origin || "No origin available"));
+            infoDump.innerHTML = "Name: ".concat(breed.name);
+          });
+          getBreedInfo(); // Load initial breed info after the breeds are loaded
+          _context.next = 18;
           break;
-        case 12:
-          _context.prev = 12;
-          _context.t0 = _context["catch"](0);
-          console.log("error happend!!", _context.t0);
         case 15:
+          _context.prev = 15;
+          _context.t0 = _context["catch"](0);
+          console.error(_context.t0);
+        case 18:
+          console.log("ZZZZZZZZinfoDump", infoDump);
+          carouselInner = document.getElementById("carouselInner"); //   infoDump.innerHTML ='yoho'
+          carouselInner.appendChild(infoDump);
+        case 21:
         case "end":
           return _context.stop();
       }
-    }, _callee, null, [[0, 12]]);
+    }, _callee, null, [[0, 15]]);
   }));
   return _initialLoad.apply(this, arguments);
 }
-initialLoad();
-
-/**
- * 2. Create an event handler for breedSelect that does the following:
- * - Retrieve information on the selected breed from the cat API using fetch().
- *  - Make sure your request is receiving multiple array items!
- *  - Check the API documentation if you're only getting a single object.
- * - For each object in the response array, create a new element for the carousel.
- *  - Append each of these new elements to the carousel.
- * - Use the other data you have been given to create an informational section within the infoDump element.
- *  - Be creative with how you create DOM elements and HTML.
- *  - Feel free to edit index.html and styles.css to suit your needs, but be careful!
- *  - Remember that functionality comes first, but user experience and design are important.
- * - Each new selection should clear, re-populate, and restart the Carousel.
- * - Add a call to this function to the end of your initialLoad function above to create the initial carousel.
- */
-function fetchBreedInfo() {
-  return _fetchBreedInfo.apply(this, arguments);
+document.addEventListener('DOMContentLoaded', initialLoad);
+function getBreedInfo() {
+  return _getBreedInfo.apply(this, arguments);
 }
-function _fetchBreedInfo() {
-  _fetchBreedInfo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-    var breedId, res, breedInfo, carouselInner;
+function _getBreedInfo() {
+  _getBreedInfo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
+    var breedId, _yield$axios$get2, data, durationInMS, firstBreed;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
           _context2.prev = 0;
           breedId = breedSelect.value;
           _context2.next = 4;
-          return _axios.default.get("https://api.thecatapi.com/v1/images/search?limit=10&breed_ids=".concat(breedId, "&api_key=").concat(API_KEY));
-        case 4:
-          res = _context2.sent;
-          breedInfo = res.data;
-          console.log("breedInfo:", breedInfo);
-          carouselInner = document.getElementById('carouselInner');
-          carouselInner.innerHTML = '';
-          breedInfo.forEach(function (data) {
-            var infoDiv = document.createElement("div");
-            infoDiv.classList.add('carousel-item');
-            infoDiv.innerHTML = "<img src=\"".concat(data.url, "\" class=\"d-block w-100\" alt=\"Cat Image\">");
-            carouselInner.appendChild(infoDiv);
-            var breedDetails = breedInfo[0].breeds[0];
-            infoDump.innerHTML = "\n        <h3>name: ".concat(breedInfo.name, "</h3>\n        <p>").concat(breedDetails.description, "</p>\n        <p>Temperament: ").concat(breedDetails.temperament, "</p>\n        <p>Origin: ").concat(breedDetails.origin, "</p>\n      ");
-            console.log("info div:", infoDiv.innerHTML);
-            // infoDump.innerHTML='hi'
-            // if (breedInfo.length > 0 && breedInfo[0].breeds.length > 0) {
-
-            // } else {
-            //   infoDump.innerHTML = 'No breed information available.';
-            // }
-
-            console.log("InfoDump updated:", infoDump);
+          return _axios.default.get('/images/search', {
+            params: {
+              limit: 10,
+              breed_ids: breedId
+            },
+            onDownloadProgress: updateProgress
           });
-          _context2.next = 15;
+        case 4:
+          _yield$axios$get2 = _context2.sent;
+          data = _yield$axios$get2.data;
+          durationInMS = _yield$axios$get2.durationInMS;
+          if (!(!data || data.length === 0)) {
+            _context2.next = 9;
+            break;
+          }
+          throw new Error('No data was returned from the API');
+        case 9:
+          console.log("Get breed info request duration: ".concat(durationInMS, "ms"));
+          Carousel.clear();
+          if (!(data.length === 0)) {
+            _context2.next = 14;
+            break;
+          }
+          infoDump.innerHTML = "<h2>No breed info available</h2>";
+          return _context2.abrupt("return");
+        case 14:
+          console.log('the whole data is:', data);
+          // data.forEach((breed, index) => {
+          //   infoDump.innerHTML = `Breed ${index + 1}:`;
+          //   console.log(`Breed ${index + 1}:`);
+          //   console.log(`ID: ${breed.id}`);
+          //   console.log(`Name: ${breed.name}`);
+          //   console.log(`Description: ${breed.description || "No description available"}`);
+          //   console.log(`Temperament: ${breed.temperament || "No temperament available"}`);
+          //   console.log(`Origin: ${breed.origin || "No origin available"}`);
+          // });
+          firstBreed = data[0].breeds && data[0].breeds[0];
+          if (firstBreed) {
+            infoDump.innerHTML = "\n        <h2>".concat(firstBreed.name, "</h2>\n        <p>").concat(firstBreed.description, "</p>\n        <p>Origin: ").concat(firstBreed.origin, "</p>\n        <p>Life Span: ").concat(firstBreed.life_span, "</p>\n        <p>Temperament: ").concat(firstBreed.temperament, "</p>\n      ");
+          } else {
+            infoDump.innerHTML = "<h2>No breed info available</h2>";
+          }
+          data.forEach(function (breed) {
+            var breedName = breed.breeds && breed.breeds[0] ? breed.breeds[0].name : 'Unknown';
+            var carouselItem = Carousel.createCarouselItem(breed.url, breedName, breed.id);
+            Carousel.appendCarousel(carouselItem);
+          });
+          Carousel.start(); // Restart the carousel to update with new items
+          _context2.next = 25;
           break;
-        case 12:
-          _context2.prev = 12;
+        case 21:
+          _context2.prev = 21;
           _context2.t0 = _context2["catch"](0);
-          console.log(_context2.t0.message);
-        case 15:
+          console.error(_context2.t0);
+          infoDump.innerHTML = "<h2>Error loading breed info</h2>";
+        case 25:
         case "end":
           return _context2.stop();
       }
-    }, _callee2, null, [[0, 12]]);
+    }, _callee2, null, [[0, 21]]);
   }));
-  return _fetchBreedInfo.apply(this, arguments);
+  return _getBreedInfo.apply(this, arguments);
 }
-breedSelect.addEventListener("change", fetchBreedInfo);
-
-/**
- * 3. Fork your own sandbox, creating a new one named "JavaScript Axios Lab."
- */
-/**
- * 4. Change all of your fetch() functions to axios!
- * - axios has already been imported for you within index.js.
- * - If you've done everything correctly up to this point, this should be simple.
- * - If it is not simple, take a moment to re-evaluate your original code.
- * - Hint: Axios has the ability to set default headers. Use this to your advantage
- *   by setting a default header with your API key so that you do not have to
- *   send it manually with all of your requests! You can also set a default base URL!
- */
-/**
- * 5. Add axios interceptors to log the time between request and response to the console.
- * - Hint: you already have access to code that does this!
- * - Add a console.log statement to indicate when requests begin.
- * - As an added challenge, try to do this on your own without referencing the lesson material.
- */
-
-/**
- * 6. Next, we'll create a progress bar to indicate the request is in progress.
- * - The progressBar element has already been created for you.
- *  - You need only to modify its "width" style property to align with the request progress.
- * - In your request interceptor, set the width of the progressBar element to 0%.
- *  - This is to reset the progress with each request.
- * - Research the axios onDownloadProgress config option.
- * - Create a function "updateProgress" that receives a ProgressEvent object.
- *  - Pass this function to the axios onDownloadProgress config option in your event handler.
- * - console.log your ProgressEvent object within updateProgess, and familiarize yourself with its structure.
- *  - Update the progress of the request using the properties you are given.
- * - Note that we are not downloading a lot of data, so onDownloadProgress will likely only fire
- *   once or twice per request to this API. This is still a concept worth familiarizing yourself
- *   with for future projects.
- */
-
-/**
- * 7. As a final element of progress indication, add the following to your axios interceptors:
- * - In your request interceptor, set the body element's cursor style to "progress."
- * - In your response interceptor, remove the progress cursor style from the body element.
- */
-/**
- * 8. To practice posting data, we'll create a system to "favourite" certain images.
- * - The skeleton of this function has already been created for you.
- * - This function is used within Carousel.js to add the event listener as items are created.
- *  - This is why we use the export keyword for this function.
- * - Post to the cat API's favourites endpoint with the given ID.
- * - The API documentation gives examples of this functionality using fetch(); use Axios!
- * - Add additional logic to this function such that if the image is already favourited,
- *   you delete that favourite using the API, giving this function "toggle" functionality.
- * - You can call this function by clicking on the heart at the top right of any image.
- */
+breedSelect.addEventListener('change', getBreedInfo);
 function favourite(_x) {
   return _favourite.apply(this, arguments);
 }
-/**
- * 9. Test your favourite() function by creating a getFavourites() function.
- * - Use Axios to get all of your favourites from the cat API.
- * - Clear the carousel and display your favourites when the button is clicked.
- *  - You will have to bind this event listener to getFavouritesBtn yourself.
- *  - Hint: you already have all of the logic built for building a carousel.
- *    If that isn't in its own function, maybe it should be so you don't have to
- *    repeat yourself in this section.
- */
-/**
- * 10. Test your site, thoroughly!
- * - What happens when you try to load the Malayan breed?
- *  - If this is working, good job! If not, look for the reason why and fix it!
- * - Test other breeds as well. Not every breed has the same data available, so
- *   your code should account for this.
- */
 function _favourite() {
   _favourite = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee3(imgId) {
+    var _yield$axios$post, data, durationInMS;
     return _regeneratorRuntime().wrap(function _callee3$(_context3) {
       while (1) switch (_context3.prev = _context3.next) {
         case 0:
+          _context3.prev = 0;
+          _context3.next = 3;
+          return _axios.default.post('/favourites', {
+            image_id: imgId
+          });
+        case 3:
+          _yield$axios$post = _context3.sent;
+          data = _yield$axios$post.data;
+          durationInMS = _yield$axios$post.durationInMS;
+          if (data) {
+            _context3.next = 8;
+            break;
+          }
+          throw new Error('No data was returned from the API');
+        case 8:
+          console.log("Favourite request duration: ".concat(durationInMS, "ms"));
+          _context3.next = 14;
+          break;
+        case 11:
+          _context3.prev = 11;
+          _context3.t0 = _context3["catch"](0);
+          console.error(_context3.t0);
+        case 14:
         case "end":
           return _context3.stop();
       }
-    }, _callee3);
+    }, _callee3, null, [[0, 11]]);
   }));
   return _favourite.apply(this, arguments);
 }
+function getFavourites() {
+  return _getFavourites.apply(this, arguments);
+}
+function _getFavourites() {
+  _getFavourites = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee4() {
+    var _yield$axios$get3, data, durationInMS;
+    return _regeneratorRuntime().wrap(function _callee4$(_context4) {
+      while (1) switch (_context4.prev = _context4.next) {
+        case 0:
+          _context4.prev = 0;
+          _context4.next = 3;
+          return _axios.default.get('/favourites', {
+            onDownloadProgress: updateProgress
+          });
+        case 3:
+          _yield$axios$get3 = _context4.sent;
+          data = _yield$axios$get3.data;
+          durationInMS = _yield$axios$get3.durationInMS;
+          if (data) {
+            _context4.next = 8;
+            break;
+          }
+          throw new Error('No data was returned from the API');
+        case 8:
+          console.log("Get favourites request duration: ".concat(durationInMS, "ms"));
+          Carousel.clear();
+          data.forEach(function (favourite) {
+            var carouselItem = Carousel.createCarouselItem(favourite.image.url, null, favourite.image.id);
+            Carousel.appendCarousel(carouselItem);
+          });
+          Carousel.start(); // Restart the carousel to update with new items
+          _context4.next = 17;
+          break;
+        case 14:
+          _context4.prev = 14;
+          _context4.t0 = _context4["catch"](0);
+          console.error(_context4.t0);
+        case 17:
+        case "end":
+          return _context4.stop();
+      }
+    }, _callee4, null, [[0, 14]]);
+  }));
+  return _getFavourites.apply(this, arguments);
+}
+getFavouritesBtn.addEventListener('click', getFavourites);
 },{"./Carousel.js":"Carousel.js","axios":"node_modules/axios/index.js"}],"node_modules/parcel-bundler/src/builtins/hmr-runtime.js":[function(require,module,exports) {
 var global = arguments[3];
 var OVERLAY_ID = '__parcel__error__overlay__';
@@ -12913,7 +12958,7 @@ var parent = module.bundle.parent;
 if ((!parent || !parent.isParcelRequire) && typeof WebSocket !== 'undefined') {
   var hostname = "" || location.hostname;
   var protocol = location.protocol === 'https:' ? 'wss' : 'ws';
-  var ws = new WebSocket(protocol + '://' + hostname + ':' + "52007" + '/');
+  var ws = new WebSocket(protocol + '://' + hostname + ':' + "53572" + '/');
   ws.onmessage = function (event) {
     checkedAssets = {};
     assetsToAccept = [];
