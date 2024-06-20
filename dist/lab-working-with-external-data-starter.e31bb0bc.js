@@ -12761,9 +12761,8 @@ function _initialLoad() {
           console.error(_context.t0);
         case 18:
           console.log("ZZZZZZZZinfoDump", infoDump);
-          carouselInner = document.getElementById("carouselInner"); //   infoDump.innerHTML ='yoho'
-          carouselInner.appendChild(infoDump);
-        case 21:
+          carouselInner = document.getElementById("carouselInner");
+        case 20:
         case "end":
           return _context.stop();
       }
@@ -12777,7 +12776,7 @@ function getBreedInfo() {
 }
 function _getBreedInfo() {
   _getBreedInfo = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee2() {
-    var breedId, _yield$axios$get2, data, durationInMS, firstBreed;
+    var breedId, _yield$axios$get2, data, durationInMS;
     return _regeneratorRuntime().wrap(function _callee2$(_context2) {
       while (1) switch (_context2.prev = _context2.next) {
         case 0:
@@ -12820,12 +12819,22 @@ function _getBreedInfo() {
           //   console.log(`Temperament: ${breed.temperament || "No temperament available"}`);
           //   console.log(`Origin: ${breed.origin || "No origin available"}`);
           // });
-          firstBreed = data[0].breeds && data[0].breeds[0];
-          if (firstBreed) {
-            infoDump.innerHTML = "\n        <h2>".concat(firstBreed.name, "</h2>\n        <p>").concat(firstBreed.description, "</p>\n        <p>Origin: ").concat(firstBreed.origin, "</p>\n        <p>Life Span: ").concat(firstBreed.life_span, "</p>\n        <p>Temperament: ").concat(firstBreed.temperament, "</p>\n      ");
-          } else {
-            infoDump.innerHTML = "<h2>No breed info available</h2>";
-          }
+          //   infoDump.innerHTML ='yoho'
+
+          console.log("infoDump", infoDump.innerHTML);
+          // const firstBreed = data[0].breeds && data[0].breeds[0];
+          // if (firstBreed) {
+          //   infoDump.innerHTML = `
+          //     <h2>${firstBreed.name}</h2>
+          //     <p>${firstBreed.description}</p>
+          //     <p>Origin: ${firstBreed.origin}</p>
+          //     <p>Life Span: ${firstBreed.life_span}</p>
+          //     <p>Temperament: ${firstBreed.temperament}</p>
+          //   `;
+          // } else {
+          infoDump.innerHTML = "<h2>".concat(infoDump.innerHTML, "</h2>");
+          // }
+
           data.forEach(function (breed) {
             var breedName = breed.breeds && breed.breeds[0] ? breed.breeds[0].name : 'Unknown';
             var carouselItem = Carousel.createCarouselItem(breed.url, breedName, breed.id);

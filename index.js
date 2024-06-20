@@ -80,8 +80,8 @@ async function initialLoad() {
   console.log("ZZZZZZZZinfoDump",infoDump)
   const carouselInner = document.getElementById("carouselInner");
 
-//   infoDump.innerHTML ='yoho'
-  carouselInner.appendChild(infoDump)
+
+
 
 }
 
@@ -119,19 +119,21 @@ async function getBreedInfo() {
     //   console.log(`Temperament: ${breed.temperament || "No temperament available"}`);
     //   console.log(`Origin: ${breed.origin || "No origin available"}`);
     // });
-
-    const firstBreed = data[0].breeds && data[0].breeds[0];
-    if (firstBreed) {
-      infoDump.innerHTML = `
-        <h2>${firstBreed.name}</h2>
-        <p>${firstBreed.description}</p>
-        <p>Origin: ${firstBreed.origin}</p>
-        <p>Life Span: ${firstBreed.life_span}</p>
-        <p>Temperament: ${firstBreed.temperament}</p>
-      `;
-    } else {
-      infoDump.innerHTML = `<h2>No breed info available</h2>`;
-    }
+//   infoDump.innerHTML ='yoho'
+  
+  console.log("infoDump", infoDump.innerHTML)
+    // const firstBreed = data[0].breeds && data[0].breeds[0];
+    // if (firstBreed) {
+    //   infoDump.innerHTML = `
+    //     <h2>${firstBreed.name}</h2>
+    //     <p>${firstBreed.description}</p>
+    //     <p>Origin: ${firstBreed.origin}</p>
+    //     <p>Life Span: ${firstBreed.life_span}</p>
+    //     <p>Temperament: ${firstBreed.temperament}</p>
+    //   `;
+    // } else {
+      infoDump.innerHTML = `<h2>${infoDump.innerHTML}</h2>`;
+    // }
 
     data.forEach((breed) => {
       const breedName = breed.breeds && breed.breeds[0] ? breed.breeds[0].name : 'Unknown';
@@ -146,6 +148,7 @@ async function getBreedInfo() {
     infoDump.innerHTML = `<h2>Error loading breed info</h2>`;
   }
 }
+
 breedSelect.addEventListener('change', getBreedInfo);
 
 export async function favourite(imgId) {
