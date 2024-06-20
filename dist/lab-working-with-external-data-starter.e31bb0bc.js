@@ -12716,7 +12716,7 @@ function initialLoad() {
 }
 function _initialLoad() {
   _initialLoad = _asyncToGenerator( /*#__PURE__*/_regeneratorRuntime().mark(function _callee() {
-    var _yield$axios$get, initialData, durationInMS, carouselInner;
+    var _yield$axios$get, initialData, durationInMS;
     return _regeneratorRuntime().wrap(function _callee$(_context) {
       while (1) switch (_context.prev = _context.next) {
         case 0:
@@ -12744,13 +12744,7 @@ function _initialLoad() {
           });
           console.log("the data i need:", initialData);
           initialData.forEach(function (breed, index) {
-            console.log("Breed ".concat(index + 1, ":"));
-            console.log("ID: ".concat(breed.id));
-            console.log("Name: ".concat(breed.name));
-            console.log("Description: ".concat(breed.description || "No description available"));
-            console.log("Temperament: ".concat(breed.temperament || "No temperament available"));
-            console.log("Origin: ".concat(breed.origin || "No origin available"));
-            infoDump.innerHTML = "Name: ".concat(breed.name);
+            infoDump.innerHTML = "<h2>Name: ".concat(breed.name, "</h2> \n         <h6>Breed ").concat(index + 1, ": </h6>\n         <h6>ID: ").concat(breed.id, "</h6>\n        <p> Description: ").concat(breed.description || "No description available", "</p>\n        <p>Temperament: ").concat(breed.temperament || "No temperament available", "</p>\n        <p>Origin: ").concat(breed.origin || "No origin available", "</p>");
           });
           getBreedInfo(); // Load initial breed info after the breeds are loaded
           _context.next = 18;
@@ -12761,8 +12755,9 @@ function _initialLoad() {
           console.error(_context.t0);
         case 18:
           console.log("ZZZZZZZZinfoDump", infoDump);
-          carouselInner = document.getElementById("carouselInner");
-        case 20:
+          //   infoDump.innerHTML = "";
+          //   const carouselInner = document.getElementById("carouselInner");
+        case 19:
         case "end":
           return _context.stop();
       }
@@ -12810,31 +12805,8 @@ function _getBreedInfo() {
           return _context2.abrupt("return");
         case 14:
           console.log('the whole data is:', data);
-          // data.forEach((breed, index) => {
-          //   infoDump.innerHTML = `Breed ${index + 1}:`;
-          //   console.log(`Breed ${index + 1}:`);
-          //   console.log(`ID: ${breed.id}`);
-          //   console.log(`Name: ${breed.name}`);
-          //   console.log(`Description: ${breed.description || "No description available"}`);
-          //   console.log(`Temperament: ${breed.temperament || "No temperament available"}`);
-          //   console.log(`Origin: ${breed.origin || "No origin available"}`);
-          // });
-          //   infoDump.innerHTML ='yoho'
-
           console.log("infoDump", infoDump.innerHTML);
-          // const firstBreed = data[0].breeds && data[0].breeds[0];
-          // if (firstBreed) {
-          //   infoDump.innerHTML = `
-          //     <h2>${firstBreed.name}</h2>
-          //     <p>${firstBreed.description}</p>
-          //     <p>Origin: ${firstBreed.origin}</p>
-          //     <p>Life Span: ${firstBreed.life_span}</p>
-          //     <p>Temperament: ${firstBreed.temperament}</p>
-          //   `;
-          // } else {
           infoDump.innerHTML = "<h2>".concat(infoDump.innerHTML, "</h2>");
-          // }
-
           data.forEach(function (breed) {
             var breedName = breed.breeds && breed.breeds[0] ? breed.breeds[0].name : 'Unknown';
             var carouselItem = Carousel.createCarouselItem(breed.url, breedName, breed.id);

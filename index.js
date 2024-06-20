@@ -63,13 +63,12 @@ async function initialLoad() {
     console.log("the data i need:", initialData);
 
     initialData.forEach((breed, index) => {
-      console.log(`Breed ${index + 1}:`);
-      console.log(`ID: ${breed.id}`);
-      console.log(`Name: ${breed.name}`);
-      console.log(`Description: ${breed.description || "No description available"}`);
-      console.log(`Temperament: ${breed.temperament || "No temperament available"}`);
-      console.log(`Origin: ${breed.origin || "No origin available"}`);
-         infoDump.innerHTML = `Name: ${breed.name}`
+         infoDump.innerHTML = `<h2>Name: ${breed.name}</h2> 
+         <h6>Breed ${index + 1}: </h6>
+         <h6>ID: ${breed.id}</h6>
+        <p> Description: ${breed.description || "No description available"}</p>
+        <p>Temperament: ${breed.temperament || "No temperament available"}</p>
+        <p>Origin: ${breed.origin || "No origin available"}</p>`
     });
  
     getBreedInfo(); // Load initial breed info after the breeds are loaded
@@ -78,11 +77,8 @@ async function initialLoad() {
   }
 
   console.log("ZZZZZZZZinfoDump",infoDump)
-  const carouselInner = document.getElementById("carouselInner");
-
-
-
-
+//   infoDump.innerHTML = "";
+//   const carouselInner = document.getElementById("carouselInner");
 }
 
 document.addEventListener('DOMContentLoaded', initialLoad);
@@ -110,30 +106,11 @@ async function getBreedInfo() {
       return;
     }
     console.log('the whole data is:', data);
-    // data.forEach((breed, index) => {
-    //   infoDump.innerHTML = `Breed ${index + 1}:`;
-    //   console.log(`Breed ${index + 1}:`);
-    //   console.log(`ID: ${breed.id}`);
-    //   console.log(`Name: ${breed.name}`);
-    //   console.log(`Description: ${breed.description || "No description available"}`);
-    //   console.log(`Temperament: ${breed.temperament || "No temperament available"}`);
-    //   console.log(`Origin: ${breed.origin || "No origin available"}`);
-    // });
-//   infoDump.innerHTML ='yoho'
   
   console.log("infoDump", infoDump.innerHTML)
-    // const firstBreed = data[0].breeds && data[0].breeds[0];
-    // if (firstBreed) {
-    //   infoDump.innerHTML = `
-    //     <h2>${firstBreed.name}</h2>
-    //     <p>${firstBreed.description}</p>
-    //     <p>Origin: ${firstBreed.origin}</p>
-    //     <p>Life Span: ${firstBreed.life_span}</p>
-    //     <p>Temperament: ${firstBreed.temperament}</p>
-    //   `;
-    // } else {
+
       infoDump.innerHTML = `<h2>${infoDump.innerHTML}</h2>`;
-    // }
+ 
 
     data.forEach((breed) => {
       const breedName = breed.breeds && breed.breeds[0] ? breed.breeds[0].name : 'Unknown';
